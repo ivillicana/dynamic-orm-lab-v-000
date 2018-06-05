@@ -54,7 +54,7 @@ class InteractiveRecord
     key = nil
     value = nil
     attr.each {|k, v| key = k, value = v}
-    sql = "SELECT * FROM #{self.table_name} "
+    sql = "SELECT * FROM #{self.table_name} WHERE #{key} = #{value}"
     DB[:conn].execute(sql)
   end
 end
