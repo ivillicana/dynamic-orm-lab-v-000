@@ -52,6 +52,7 @@ class InteractiveRecord
 
   def self.find_by(attr)
     value = attr.values.first
+    form_value = value.class == Fixnum ? value : "'#{value}'"
     sql = "SELECT * FROM #{self.table_name} WHERE #{attr.keys.first} = #{value}"
     DB[:conn].execute(sql)
   end
